@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,4 +36,9 @@ public class User {
     inverseJoinColumns = @JoinColumn(name = "role_id"),
     uniqueConstraints = { @UniqueConstraint(columnNames = {"user_id", "role_id"})})
     private List<Role> roles;
+
+
+    //Este campo no esta mapeado a un atributo de la tabla
+    @Transient
+    private boolean admin;
 }
